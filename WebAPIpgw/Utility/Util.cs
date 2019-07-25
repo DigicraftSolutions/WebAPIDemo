@@ -7,11 +7,11 @@ namespace WebAPIpgw.Utility
     {
         public static int GetDelay()
         {
-            return random.Next(Configuration.GetDelayMin(),
+            return Random.Next(Configuration.GetDelayMin(),
                                  Configuration.GetDelayMax());
         }
-      
-        static System.Random random = new System.Random();
+
+        private static readonly Random Random = new Random();
     }
 
     public static class Configuration
@@ -19,31 +19,29 @@ namespace WebAPIpgw.Utility
        private static int _delayMin = int.MaxValue;
        private static int _delayMax = int.MaxValue;
 
-        public static int getKeyValInt(string key)
+        public static int GetGetKeyValInt(string key)
         {
-            int j;
-            bool b = Int32.TryParse(ConfigurationManager.AppSettings[key], out j);
+            bool b = int.TryParse(ConfigurationManager.AppSettings[key], out var j);
             if (b)
                 return j;
-            else
-                return 0;
+            return 0;
         }
 
         public static int GetDelayMin()
         {
             if (_delayMin == int.MaxValue)
-                _delayMin = getKeyValInt("DelayMin");
+                _delayMin = GetGetKeyValInt("DelayMin");
             return _delayMin;
         }
 
         public static int GetDelayMax()
         {
             if ( _delayMax == int.MaxValue )
-                _delayMax = getKeyValInt("DelayMax");
+                _delayMax = GetGetKeyValInt("DelayMax");
             return _delayMax;
         }
 
-        public static string getKeyVal(string key)
+        public static string GetGetKeyVal(string key)
         {
             return ConfigurationManager.AppSettings[key];
         }

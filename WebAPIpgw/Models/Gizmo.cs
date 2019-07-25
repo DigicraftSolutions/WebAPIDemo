@@ -10,7 +10,7 @@ namespace WebAPIpgw.Models
         public Gizmo(int cnt, int qty)
         {
             Id = cnt;
-            Name = "Gizmo " + cnt.ToString();
+            Name = "Gizmo " + cnt;
             Quantity = qty;
             IntroducedDate = DateTime.Now.AddDays(4*cnt);
         }

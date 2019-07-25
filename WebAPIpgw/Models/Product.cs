@@ -8,7 +8,7 @@ namespace WebAPIpgw.Models
         public Product(int cnt)
         {
             Id = cnt;
-            Name = "Product " + cnt.ToString();
+            Name = "Product " + cnt;
             Price = .99M + cnt;
         }
 
